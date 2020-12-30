@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import '../styles/Slide.scss';
 
-export default function Slide({ id, components }) {
+export default function Slide({ id, components, presentationMode }) {
     const [componentsList, setComponentsList] = useState(components);
     const [activeDrags, setActiveDrags] = useState(0);
     
@@ -25,9 +25,19 @@ export default function Slide({ id, components }) {
         <div className="slide">
             <button className="addComponent" onClick={addComponent}>Add Component</button>
             {componentsList.map((component) => {
-                return(
-                    <input />
-                );
+                if (presentationMode) {
+                    return(
+                        <Draggable onStart={() => false}>
+                            <input />
+                        </Draggable>
+                    );
+                } else {
+                    return(
+                        <Draggable {...dragHandlers}>
+                            <input />
+                        </Draggable>
+                    );
+                }
             })}
         </div>
     );
