@@ -9,6 +9,7 @@ import { Provider } from "./Context";
 import Home from './routes/Home';
 import Profile from './routes/Profile';
 import './Fluidum.css';
+import './styles/Fluidum.scss';
 
 export default function Fluidum() {
   return (
